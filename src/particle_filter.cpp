@@ -72,7 +72,8 @@ void ParticleFilter::prediction(double delta_t, double std_pos[],
     double new_y = 0;
     double new_theta = 0;
 
-    if (abs(yaw_rate) < 1e-5) {
+    // fabs is for float type number.
+    if (fabs(yaw_rate) < 1e-5) {
       new_theta = particles[idx].theta;
       new_x = particles[idx].x + velocity*delta_t*cos(particles[idx].theta);
       new_y = particles[idx].y + velocity*delta_t*sin(particles[idx].theta);
